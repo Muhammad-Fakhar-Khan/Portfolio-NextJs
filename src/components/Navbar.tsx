@@ -8,8 +8,8 @@ const Navbar = () => {
     <nav className="w-full fixed top-0 left-0 z-50 bg-white/70 dark:bg-gray-900/70 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
         
-        {/* Left Side: Social Icons */}
-        <div className="flex items-center space-x-4">
+        {/* Left Side: Social Icons (Desktop Only) */}
+        <div className="hidden md:flex items-center space-x-4">
           <a
             href="https://github.com/Muhammad-Fakhar-Khan"
             target="_blank"

@@ -1,26 +1,39 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const mousePos = useRef({ x: 0, y: 0 });
   const cursorPos = useRef({ x: 0, y: 0 });
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
-    if (!cursorRef.current) return;
+    // Check if screen is desktop
+    const checkDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024); // >=1024px = desktop
+    };
 
-    // Hide the default cursor globally
+    checkDesktop();
+    window.addEventListener("resize", checkDesktop);
+
+    return () => {
+      window.removeEventListener("resize", checkDesktop);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isDesktop || !cursorRef.current) return;
+
+    // Hide default cursor
     document.body.style.cursor = "none";
 
     const moveCursor = (e: MouseEvent) => {
       mousePos.current = { x: e.clientX, y: e.clientY };
     };
 
-    // Animate cursor smoothly
     const animate = () => {
       if (cursorRef.current) {
-        // Linear interpolation (lerp) for smooth movement
         cursorPos.current.x += (mousePos.current.x - cursorPos.current.x) * 0.2;
         cursorPos.current.y += (mousePos.current.y - cursorPos.current.y) * 0.2;
 
@@ -29,7 +42,6 @@ export default function CustomCursor() {
       requestAnimationFrame(animate);
     };
 
-    // Hover effect for buttons and links
     const handleMouseEnter = () => {
       if (cursorRef.current) {
         cursorRef.current.style.transform += " scale(3)";
@@ -53,15 +65,16 @@ export default function CustomCursor() {
     animate();
 
     return () => {
+      document.body.style.cursor = "default";
       window.removeEventListener("mousemove", moveCursor);
-      document.body.style.cursor = "default"; // restore default cursor on unmount
-
       document.querySelectorAll("button, a").forEach((el) => {
         el.removeEventListener("mouseenter", handleMouseEnter);
         el.removeEventListener("mouseleave", handleMouseLeave);
       });
     };
-  }, []);
+  }, [isDesktop]);
+
+  if (!isDesktop) return null; // Don’t render cursor on mobile/tablet
 
   return (
     <div

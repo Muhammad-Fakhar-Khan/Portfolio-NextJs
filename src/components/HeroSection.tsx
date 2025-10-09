@@ -50,10 +50,10 @@ export default function HeroSection() {
           I am a passionate <span ref={typedEl} className="text-blue-400"></span>
         </h2>
 
-        <p className="text-gray-400 max-w-md sm:max-w-lg md:max-w-xl mx-auto md:mx-0 text-sm sm:text-base md:text-lg">
+        {/* <p className="text-gray-400 max-w-md sm:max-w-lg md:max-w-xl mx-auto md:mx-0 text-sm sm:text-base md:text-lg">
           I love building modern, responsive, and creative web experiences using
           cutting-edge technologies like Next.js, Tailwind CSS, and Prisma.
-        </p>
+        </p> */}
 
         <div className="mt-6 flex flex-wrap justify-center md:justify-start gap-4">
           <a
