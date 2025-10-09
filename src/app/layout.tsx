@@ -2,6 +2,7 @@ import './globals.css'
 import type { ReactNode } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import CustomCursor from '@/components/CustomCursor'
 
 export const metadata = {
   title: 'Fakhar Khan — Portfolio',
@@ -13,6 +14,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en">
       <body>
         <Navbar />
+        <CustomCursor />
         <main className="min-h-[70vh]">
           {children}
         </main>

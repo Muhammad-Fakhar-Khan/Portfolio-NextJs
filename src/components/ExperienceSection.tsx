@@ -6,17 +6,17 @@ import { Briefcase } from "lucide-react";
 export default function ExperienceSection() {
   const experiences = [
     {
-      side: "right",
+      side: "left",
       role: "Web Development Intern",
       company: "Cohexify",
       duration: "Mar 2024 – Aug 2024",
       tasks: [
         "Assisted in the design and deployment of client websites.",
-        "Collaborated with senior developers to improve performance and UX.",
+        "Collaborated with senior developers to improve performance.",
       ],
     },
     {
-      side: "left",
+      side: "right",
       role: "WordPress Developer",
       company: "Stolidzone Technologies",
       duration: "Nov 2024 – Apr 2025",
@@ -62,7 +62,7 @@ export default function ExperienceSection() {
             key={index}
             initial={{
               opacity: 0,
-              x: exp.side === "left" ? -100 : 100,
+              x: exp.side === "re" ? -100 : 100,
             }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
