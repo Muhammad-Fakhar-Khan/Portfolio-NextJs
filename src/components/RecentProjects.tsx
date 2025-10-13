@@ -44,7 +44,7 @@ export default function RecentProjects() {
         transition={{ duration: 0.7 }}
         className="text-4xl md:text-5xl font-bold mb-12 text-center"
       >
-        Some of My <span className="text-blue-500">Recent Work</span>
+        Projects I've <span className="text-blue-500">Completed</span>
       </motion.h2>
 
       {/* Project Grid */}

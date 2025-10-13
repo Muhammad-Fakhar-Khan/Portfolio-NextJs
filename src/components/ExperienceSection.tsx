@@ -46,9 +46,9 @@ export default function ExperienceSection() {
         transition={{ duration: 0.8 }}
         className="text-5xl md:text-6xl font-extrabold mb-16 text-center tracking-tight"
       >
-        What I have done so far <br />
+        My Work  <br />
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
-          Work Experience
+          So Far
         </span>
       </motion.h2>
 

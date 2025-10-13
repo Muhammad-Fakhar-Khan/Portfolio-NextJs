@@ -28,7 +28,7 @@ export default function Certificates() {
           transition={{ duration: 0.6 }}
           className="text-4xl font-bold mb-4"
         >
-          Some of my <span className="text-blue-500">Certificates</span>
+          Certifications & <span className="text-blue-500">Achievements</span>
         </motion.h2>
 
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
