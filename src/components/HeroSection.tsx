@@ -34,7 +34,7 @@ export default function HeroSection() {
 
   return (
     <section className="relative flex flex-col-reverse md:flex-row items-center justify-between min-h-screen pt-16 md:pt-0 px-6 sm:px-10 md:px-16 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white overflow-hidden">
-      
+
       {/* Left Content */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
@@ -73,7 +73,7 @@ export default function HeroSection() {
         transition={{ duration: 0.6 }}
         className="w-full md:w-1/2 flex justify-center md:justify-end mt-10 sm:mt-12 md:mt-0"
       >
-        <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80">
+        <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96">
           <Image
             src="/Assets/portfolio.png"
             alt="Muhammad Fakhar Khan"
