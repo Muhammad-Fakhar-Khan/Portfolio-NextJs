@@ -57,8 +57,8 @@ export default function HeroSection() {
 
         <div className="mt-6 flex flex-wrap justify-center md:justify-start gap-4">
           <a
-            href="/Assets/Fakhar_Khan_CV"
-            download="Muhammad_Fakhar_Khan_Resume.pdf"
+            href="/Assets/Fakhar_Khan_CV.pdf"
+            download="Muhammad_Fakhar_Khan_CV.pdf"
             className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-medium rounded-lg shadow-md hover:opacity-90 transition-all duration-300"
           >
             <Download size={20} /> Download Resume
