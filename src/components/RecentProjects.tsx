@@ -108,6 +108,25 @@ export default function RecentProjects() {
           </motion.div>
         ))}
       </div>
+
+      {/* View More Button */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.6 }}
+        viewport={{ once: true }}
+        className="mt-16"
+      >
+        <a
+          href="https://github.com/Muhammad-Fakhar-Khan?tab=repositories"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center gap-2 px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 rounded-lg text-white font-medium text-lg shadow-md hover:shadow-blue-500/20 transition-all duration-300"
+        >
+          <Github className="w-5 h-5" />
+          View More Projects
+        </a>
+      </motion.div>
     </section>
   );
 }
