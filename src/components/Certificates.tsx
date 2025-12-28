@@ -33,7 +33,7 @@ const certificateCategories = {
   "Other Certificates": [
     {
       title: "Other Certificate",
-      image: "/Assets/driving.png",
+      image: "",
     },
   ],
 } as const;
@@ -55,7 +55,7 @@ export default function Certificates() {
 
   return (
     <section
-      className="py-20 bg-gradient-to-b from-gray-950 to-gray-900 text-white"
+      className="py-20 bg-linear-to-b from-gray-950 to-gray-900 text-white"
       id="certificates"
     >
       <div className="max-w-6xl mx-auto px-6">
