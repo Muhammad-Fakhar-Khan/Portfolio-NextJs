@@ -7,19 +7,42 @@ import { useState } from "react";
 const certificateCategories = {
   "School Certificates": [
     {
-      title: "School Excellence Award",
-      image: "/Assets/school1.png",
+      title: "International Kangaroo Linguistic Contest",
+      image: "/Assets/Certificates/School/School Certificates_page-0001.jpg",
+    },
+    {
+      title: "School Debate Contest",
+      image: "/Assets/Certificates/School/School Certificates_page-0009.jpg",
+    },
+    {
+      title: "School Sports Day",
+      image: "/Assets/Certificates/School/School Certificates_page-0010.jpg",
     },
   ],
 
   "University Certificates": [
     {
-      title: "YoungDev Intern",
-      image: "/Assets/Muhammad Fakhar Khan-1.png",
+      title: "CIPE '25 Certificate",
+      image: "/Assets/Certificates/CIPE'25.jpg",
     },
     {
       title: "Generative AI Certificate",
       image: "/Assets/Generative AI.jpg",
+    },
+    {
+      title: "SSUET InHouse Project Exhibition'22 Certificate",
+      image: "/Assets/Certificates/SSUET InHouse Project Exhibition'22.jpg",
+    },
+  ],
+
+  "Courses Certificates": [
+    {
+      title: "OCI AI Foundation",
+      image: "/Assets/Certificates/OCI AI Fundation/OCI25AICFA.jpeg",
+    },
+    {
+      title: "Tailwind CSS",
+      image: "/Assets/Certificates/Tailwind CSS/Muhammad Fakhar Khan-1.png",
     },
   ],
 
@@ -28,36 +51,42 @@ const certificateCategories = {
       title: "Technova'25 Certificate",
       image: "/Assets/Muhamad Fakhar Khan.png",
     },
+    {
+      title: "39th Multi-Topic International Symposium 2025",
+      image: "/Assets/Certificates/39th IEEP.jpg",
+    },
+    {
+      title: "E-Sport Module at Young Techno Fest'23",
+      image: "/Assets/Certificates/Young Techno Fest'23.jpg",
+    },
   ],
 
   "Other Certificates": [
     {
-      title: "Other Certificate",
-      image: "",
+      title: "RAMADAN DRIVE 2024",
+      image: "/Assets/Certificates/Ramadan Drive'24.jpg",
     },
   ],
 } as const;
 
 type CategoryKey = keyof typeof certificateCategories;
+type Certificate = {
+  title: string;
+  image: string;
+};
 
-const categories = ["All", ...Object.keys(certificateCategories)] as const;
-
-// Placeholder image if cert.image is missing
-const placeholderImage = "/Assets/placeholder.png";
+const categories = Object.keys(certificateCategories) as CategoryKey[];
 
 export default function Certificates() {
-  const [activeCategory, setActiveCategory] = useState<string>("All");
+  const [activeCategory, setActiveCategory] = useState<CategoryKey>(
+    categories[0]
+  );
+  const [activeCert, setActiveCert] = useState<Certificate | null>(null);
 
-  const filteredCertificates =
-    activeCategory === "All"
-      ? Object.values(certificateCategories).flat()
-      : certificateCategories[activeCategory as CategoryKey] ?? [];
+  const filteredCertificates = certificateCategories[activeCategory];
 
   return (
-    <section
-      className="py-20 bg-linear-to-b from-gray-950 to-gray-900 text-white"
-      id="certificates"
-    >
+    <div className="py-20 bg-gradient-to-b from-gray-950 to-gray-900 text-white">
       <div className="max-w-6xl mx-auto px-6">
         {/* Heading */}
         <motion.h2
@@ -75,12 +104,11 @@ export default function Certificates() {
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition
-                ${
-                  activeCategory === category
-                    ? "bg-indigo-600 text-white"
-                    : "bg-gray-800 text-gray-300 hover:bg-gray-700"
-                }`}
+              className={`px-5 py-2 rounded-full text-sm font-medium transition ${
+                activeCategory === category
+                  ? "bg-indigo-600 text-white"
+                  : "bg-gray-800 text-gray-300 hover:bg-gray-700"
+              }`}
             >
               {category}
             </button>
@@ -101,33 +129,70 @@ export default function Certificates() {
               <motion.div
                 key={cert.title}
                 whileHover={{ scale: 1.05 }}
-                className="bg-gray-800 p-4 rounded-2xl shadow-lg border border-gray-700 hover:border-indigo-500 transition"
+                onClick={() => setActiveCert(cert)}
+                className="cursor-pointer bg-gray-800 p-4 rounded-2xl shadow-lg border border-gray-700 hover:border-indigo-500 transition"
               >
                 <div className="relative w-full h-64 mb-4">
-                  {cert.image ? (
-                    <Image
-                      src={cert.image}
-                      alt={cert.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover rounded-xl"
-                    />
-                  ) : (
-                    <Image
-                      src={placeholderImage}
-                      alt="Placeholder"
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover rounded-xl opacity-50"
-                    />
-                  )}
+                  <Image
+                    src={cert.image}
+                    alt={cert.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw,
+                           (max-width: 1200px) 50vw,
+                           33vw"
+                    className="object-cover rounded-xl"
+                  />
                 </div>
-                <h3 className="text-lg font-semibold text-center">{cert.title}</h3>
+                <h3 className="text-lg font-semibold text-center">
+                  {cert.title}
+                </h3>
               </motion.div>
             ))}
           </motion.div>
         </AnimatePresence>
       </div>
-    </section>
+
+      {/* Modal Preview */}
+      <AnimatePresence>
+        {activeCert && (
+          <motion.div
+            className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setActiveCert(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.9 }}
+              transition={{ duration: 0.3 }}
+              className="relative max-w-5xl w-full bg-gray-900 rounded-xl overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setActiveCert(null)}
+                className="absolute top-3 right-3 z-10 text-white text-2xl hover:text-red-400"
+              >
+                ✕
+              </button>
+
+              <div className="relative w-full h-[80vh]">
+                <Image
+                  src={activeCert.image}
+                  alt={activeCert.title}
+                  fill
+                  className="object-contain"
+                />
+              </div>
+
+              <div className="p-4 text-center font-semibold">
+                {activeCert.title}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }
