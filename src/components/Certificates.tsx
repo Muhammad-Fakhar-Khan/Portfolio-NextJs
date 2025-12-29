@@ -5,21 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
 const certificateCategories = {
-  "School Certificates": [
-    {
-      title: "International Kangaroo Linguistic Contest",
-      image: "/Assets/Certificates/School/School Certificates_page-0001.jpg",
-    },
-    {
-      title: "School Debate Contest",
-      image: "/Assets/Certificates/School/School Certificates_page-0009.jpg",
-    },
-    {
-      title: "School Sports Day",
-      image: "/Assets/Certificates/School/School Certificates_page-0010.jpg",
-    },
-  ],
-
+  
   "University Certificates": [
     {
       title: "CIPE '25 Certificate",

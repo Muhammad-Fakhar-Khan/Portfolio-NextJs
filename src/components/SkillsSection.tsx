@@ -4,10 +4,17 @@ import { motion } from "framer-motion";
 
 export default function SkillsSection() {
   const skills = {
-    Frontend: ["HTML", "JavaScript", "React.js", "Next.js", "Flutter"],
+    "Languages & Frameworks": [
+      "TypeScript",
+      "JavaScript",
+      "HTML",
+      "React.js",
+      "Next.js",
+      "Flutter",
+    ],
     "Styling & 3D": ["Vanilla CSS", "Tailwind CSS", "Three.js"],
-    Backend: ["SQL", "WordPress"],
-    Tools: ["Blender", "Unity"],
+    Backend: ["SQL", "WordPress", "Prisma"],
+    Tools: ["Blender", "Unity", "ESLint", "npm / Node.js ecosystem"],
   };
 
   return (
@@ -43,12 +50,10 @@ export default function SkillsSection() {
             transition={{ duration: 0.6, delay: index * 0.2 }}
             className="group relative bg-gray-900/60 backdrop-blur-lg p-8 rounded-3xl shadow-xl border border-gray-800 hover:border-blue-500 transition-all duration-500 hover:scale-105 hover:shadow-blue-600/20"
           >
-            {/* Category Header */}
             <h3 className="text-2xl font-semibold text-center mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">
               {category}
             </h3>
 
-            {/* Skills List */}
             <ul className="space-y-3 text-gray-300 text-center">
               {items.map((skill) => (
                 <li
@@ -60,13 +65,12 @@ export default function SkillsSection() {
               ))}
             </ul>
 
-            {/* Glowing Accent Line */}
             <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-600 rounded-b-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           </motion.div>
         ))}
       </div>
 
-      {/* Floating particles (optional aesthetic) */}
+      {/* Floating particles */}
       <div className="absolute inset-0 overflow-hidden -z-10">
         {[...Array(15)].map((_, i) => (
           <motion.span
